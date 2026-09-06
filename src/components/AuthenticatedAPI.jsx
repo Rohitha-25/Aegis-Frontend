@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import api from "../services/api";
 
 function AuthenticatedAPI({ children }) {
     
     const { getAccessTokenSilently } = useAuth0();
+    const [ready, setReady] = useState(false);
 
     useEffect(() => {
         const requestInterceptor = api
@@ -26,6 +27,7 @@ function AuthenticatedAPI({ children }) {
                                             return config;
                                         }
                                     );
+        setReady(true)
 
         return () => {
             api
@@ -37,6 +39,10 @@ function AuthenticatedAPI({ children }) {
         };
 
     }, [getAccessTokenSilently]);
+
+    if (!ready) {
+        return null;
+    }
 
     return children;
 }
