@@ -3,6 +3,9 @@
 ### Overview
 A.E.G.I.S. (AI Enterprise Governance & Identity Security) is an avengers-inspired security-focused multi-agent platform that demonstrates authentication, least-privilege authorization, tool governance, auditability, risk controls, PAM/JIT workflows and AI-assisted knowledge/security analysis.
 
+The frontend follows a key principle:
+It presents capabilities based on the authenticated user's permissions and delegates authorization to the backend.
+
 ### Features
 - Auth0 Universal Login with OAuth 2.0 / OIDC
 - JWT access-token acquisition for the A.E.G.I.S. API
@@ -108,6 +111,36 @@ src/
 ├── services/         # Axios API client
 ├── App.jsx           # Application routing / composition
 └── main.jsx          # Application entry point
+```
+
+### Local Setup
+
+#### Prerequisites
+- Node.js 18+
+- npm 9+
+
+#### 1. Clone
+```
+git clone https://github.com/Rohitha-25/Aegis-Frontend.git
+cd Aegis-Frontend
+```
+
+#### 2. Install Dependencies
+```
+npm install
+```
+
+#### 3. Configure environment variables
+Create a .env file in the project root:
+```
+VITE_API_URL=http://localhost:8080/api
+VITE_AUTH0_DOMAIN=your-auth0-domain
+VITE_AUTH0_CLIENT_ID=your-auth0-client-id
+```
+
+#### 3. Run
+```
+npm run dev
 ```
 
 #### Related Repository
